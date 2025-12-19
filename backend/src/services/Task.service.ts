@@ -23,18 +23,18 @@ export class TaskService {
     let assignedToId: mongoose.Types.ObjectId | undefined;
 
     // Handle assignedTo email lookup
-    if (taskData.assignedTo) {
-      const assignedUser = await UserRepository.findByEmail(taskData.assignedTo);
+    if (taskData.assignedTo && taskData.assignedTo.trim()) {
+      const assignedUser = await UserRepository.findByEmail(taskData.assignedTo.trim());
       if (!assignedUser) {
         throw new Error(`User with email ${taskData.assignedTo} not found`);
       }
       assignedToId = assignedUser._id as mongoose.Types.ObjectId;
-    } else if (taskData.assignedToId) {
+    } else if (taskData.assignedToId && taskData.assignedToId.trim()) {
       // Validate assignedToId if provided directly
-      if (!mongoose.Types.ObjectId.isValid(taskData.assignedToId)) {
+      if (!mongoose.Types.ObjectId.isValid(taskData.assignedToId.trim())) {
         throw new Error('Invalid assigned user ID');
       }
-      assignedToId = new mongoose.Types.ObjectId(taskData.assignedToId);
+      assignedToId = new mongoose.Types.ObjectId(taskData.assignedToId.trim());
     }
 
     const task = await TaskRepository.create({

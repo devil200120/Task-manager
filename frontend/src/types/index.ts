@@ -55,7 +55,8 @@ export interface CreateTaskDto {
   dueDate: string;
   priority: TaskPriority;
   status?: TaskStatus;
-  assignedToId?: string;
+  assignedTo?: string; // Email address
+  assignedToId?: string; // User ID (backend will use email if provided)
 }
 
 /**
@@ -67,7 +68,8 @@ export interface UpdateTaskDto {
   dueDate?: string;
   priority?: TaskPriority;
   status?: TaskStatus;
-  assignedToId?: string | null;
+  assignedTo?: string | null; // Email address
+  assignedToId?: string | null; // User ID (backend will use email if provided)
 }
 
 /**
