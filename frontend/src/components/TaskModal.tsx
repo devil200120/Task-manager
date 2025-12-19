@@ -3,7 +3,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { X, Calendar, AlertCircle } from 'lucide-react';
-import { Task, TaskPriority, TaskStatus } from '../types';
+import { Task } from '../types';
 import UserSearchDropdown from './UserSearchDropdown';
 
 const taskSchema = z.object({

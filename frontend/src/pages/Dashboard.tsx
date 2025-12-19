@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar';
 import { useAuth } from '../contexts/AuthContext';
 import { useDashboard } from '../hooks/useTasks';
 import { format } from 'date-fns';
-import { Clock, CheckCircle, AlertCircle, TrendingUp, User as UserIcon, Calendar, Plus, ArrowRight, ListChecks } from 'lucide-react';
+import { CheckCircle, AlertCircle, User as UserIcon, Calendar, Plus, ArrowRight, ListChecks } from 'lucide-react';
 
 
 const Dashboard: React.FC = () => {

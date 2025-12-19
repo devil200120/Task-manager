@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import Navbar from '../components/Navbar';
-import { ArrowLeft, User, Mail, Lock, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, User, Mail, Lock, AlertCircle } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { apiClient } from '../lib/api';
 import { ToastContainer } from '../components/Toast';

@@ -59,7 +59,7 @@ const CreateTask: React.FC = () => {
         description: data.description,
         priority: data.priority as TaskPriority,
         status: data.status as TaskStatus,
-        assignedTo: data.assignedTo || undefined,
+        assignedToId: data.assignedTo || undefined,
         dueDate: new Date(data.dueDate).toISOString(),
       });
       addToast('Task created successfully!', 'success');

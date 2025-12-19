@@ -75,7 +75,7 @@ const TaskDetail: React.FC = () => {
     if (!task) return;
     
     try {
-      const response = await apiClient.updateTask(task._id, { status: 'Completed' });
+      const response = await apiClient.updateTask(task._id, { status: TaskStatus.COMPLETED });
       
       if (response.success && response.data) {
         addToast('Task marked as completed!', 'success');
@@ -93,7 +93,7 @@ const TaskDetail: React.FC = () => {
     const creatorId = typeof task.creatorId === 'object' && task.creatorId._id 
       ? task.creatorId._id 
       : task.creatorId;
-    return creatorId === user.id;
+    return creatorId === user._id || creatorId === user.id;
   };
 
   const handleSave = async (data: any) => {

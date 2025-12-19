@@ -22,6 +22,7 @@ export enum TaskStatus {
  * User interface
  */
 export interface User {
+  _id: string;
   id: string;
   name: string;
   email: string;

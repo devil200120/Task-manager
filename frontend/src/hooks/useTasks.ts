@@ -4,13 +4,17 @@ import { apiClient } from '../lib/api';
 import { useEffect } from 'react';
 import { socketClient } from '../lib/socket';
 
-const fetcher = async (url: string, params?: Record<string, string>) => {
-  if (url === '/tasks/dashboard') {
-    const response = await apiClient.getDashboard();
-    return response.success ? response.data : null;
-  }
+const tasksFetcher = async (url: string, params?: Record<string, string>): Promise<Task[]> => {
   const response = await apiClient.getTasks(params);
-  return response.success ? response.data?.tasks : [];
+  return response.success ? response.data?.tasks || [] : [];
+};
+
+const dashboardFetcher = async (): Promise<DashboardData> => {
+  const response = await apiClient.getDashboard();
+  if (response.success && response.data) {
+    return response.data;
+  }
+  return { assignedTasks: [], createdTasks: [], overdueTasks: [] };
 };
 
 /**
@@ -19,7 +23,7 @@ const fetcher = async (url: string, params?: Record<string, string>) => {
 export const useTasks = (params?: Record<string, string>) => {
   const { data, error, isLoading } = useSWR<Task[]>(
     ['/tasks', JSON.stringify(params)],
-    () => fetcher('/tasks', params),
+    () => tasksFetcher('/tasks', params),
     {
       revalidateOnFocus: false,
       dedupingInterval: 2000,
@@ -96,7 +100,7 @@ export const useTasks = (params?: Record<string, string>) => {
 export const useDashboard = () => {
   const { data, error, isLoading } = useSWR<DashboardData>(
     '/tasks/dashboard',
-    () => fetcher('/tasks/dashboard'),
+    dashboardFetcher,
     {
       revalidateOnFocus: false,
       dedupingInterval: 2000,

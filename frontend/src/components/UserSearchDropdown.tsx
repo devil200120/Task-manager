@@ -4,14 +4,12 @@ import { apiClient } from '../lib/api';
 import { User as UserType } from '../types';
 
 interface UserSearchDropdownProps {
-  value?: string;
   onChange: (email: string) => void;
   placeholder?: string;
   error?: string;
 }
 
 const UserSearchDropdown: React.FC<UserSearchDropdownProps> = ({
-  value,
   onChange,
   placeholder = 'Search user by name or email...',
   error,
