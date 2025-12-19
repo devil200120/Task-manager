@@ -4,6 +4,7 @@ import { apiClient } from '../lib/api';
 import { User as UserType } from '../types';
 
 interface UserSearchDropdownProps {
+  value?: string;
   onChange: (email: string) => void;
   placeholder?: string;
   error?: string;

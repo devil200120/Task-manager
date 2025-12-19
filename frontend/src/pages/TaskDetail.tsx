@@ -3,7 +3,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import { ArrowLeft, Calendar, User, UserPlus, Clock, Edit2, Trash2, Loader2, AlertCircle, CheckCircle2 } from 'lucide-react';
 import { apiClient } from '../lib/api';
-import { Task } from '../types';
+import { Task, TaskStatus } from '../types';
 import TaskModal from '../components/TaskModal';
 import { ToastContainer } from '../components/Toast';
 import { useAuth } from '../contexts/AuthContext';

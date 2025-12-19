@@ -4,7 +4,7 @@ import { apiClient } from '../lib/api';
 import { useEffect } from 'react';
 import { socketClient } from '../lib/socket';
 
-const tasksFetcher = async (url: string, params?: Record<string, string>): Promise<Task[]> => {
+const tasksFetcher = async (_url: string, params?: Record<string, string>): Promise<Task[]> => {
   const response = await apiClient.getTasks(params);
   return response.success ? response.data?.tasks || [] : [];
 };
